@@ -9,6 +9,7 @@ namespace PublisherSubscriberDemo
     {
         public static void Main(string[] args)
         {
+            // Display the program heading
             DisplayBanner();
 
             // Create the publisher
