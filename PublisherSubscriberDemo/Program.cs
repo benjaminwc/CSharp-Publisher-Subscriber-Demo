@@ -19,7 +19,7 @@ namespace PublisherSubscriberDemo
             // Create the subscriber and subscribe to event
             Subscriber subscriber = new Subscriber(publisher);
             Console.WriteLine("Subscriber object created.");
-            subscriber.SubscribeToPublisherEvent();
+            subscriber.SubscribeToPublisherEvents();
             Console.WriteLine("Subscriber subscribes to Publisher Event.");
 
             // Set the publisher status
@@ -32,8 +32,16 @@ namespace PublisherSubscriberDemo
             publisher.Status = Publisher.StatusEnum.Completed;
             publisher.Status = Publisher.StatusEnum.Closed;
 
+
+            // Set the publisher Age property
+            // An event will fire each time the age is set
+            publisher.Age = 10;
+            publisher.Age = 20;
+            publisher.Age = 30;
+
+
             // Unsubscribe from the publisher event
-            subscriber.UnsubscribeFromPublisherEvent();
+            subscriber.UnsubscribeFromPublisherEvents();
 
             // Wait for user input
             Console.ReadLine();

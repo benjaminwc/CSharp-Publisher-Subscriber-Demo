@@ -16,19 +16,26 @@ namespace PublisherSubscriberDemo
 
         public void HandleJobStatusUpdate(Publisher sender, Publisher.PublisherEventArgs args)
         {
-            Console.WriteLine($"Publisher Event Fired.  Subscriber handles event. -> Publisher.Status == {args.Status.ToString()}");
+            Console.WriteLine($"Publisher Status Event Fired.  Subscriber handles event. -> Publisher.Status == {args.Status.ToString()}");
         }
 
-        public void SubscribeToPublisherEvent()
+        public void HandleAgeUpdate(Publisher sender, Publisher.PublisherEventArgs args)
         {
-            // Connect the event handler here to the publisher
+            Console.WriteLine($"Publisher Age Update Event Fired.  Subscriber handles event. -> Publisher.Age == {args.Age.ToString()}");
+        }
+
+        public void SubscribeToPublisherEvents()
+        {
+            // Connect the event handlers here to the publisher
             _publisher.OnStatusUpdate += HandleJobStatusUpdate;
+            _publisher.OnAgeUpdate += HandleAgeUpdate;
         }
 
-        public void UnsubscribeFromPublisherEvent()
+        public void UnsubscribeFromPublisherEvents()
         {
-            // Disconnect the event handler from the publishere
+            // Disconnect the event handlers from the publisher
             _publisher.OnStatusUpdate -= HandleJobStatusUpdate;
+            _publisher.OnAgeUpdate -= HandleAgeUpdate;
         }
     }
 }
